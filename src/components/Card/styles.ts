@@ -16,11 +16,12 @@ export const Container = styled.div`
       background: var(--background);
       display: block;
       align-items: center;
-      line-height: 3rem;
-      height: 7.5rem;
+      line-height: 1rem;
+      height: auto;
       border-radius: 1rem 1rem 0rem 0rem;
     }
     main{
+      background: var(--shape01);
       padding: 1.5rem 2rem;
       h2{
         color: var(--text-body);

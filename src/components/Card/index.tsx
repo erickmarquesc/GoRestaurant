@@ -15,17 +15,13 @@ export function Card() {
           return(
           <div key={food.id}>
             <header>
-              <img src={imgLogo} alt="Entradas" />
+              <img src={food.image} alt="Entradas" />
             </header>
 
             <main>
               <h2>{food.name}</h2>
-              <p>
-                Macarrão ao molho branco, fughi e cheiro verde das montanhas
-              </p>
-              <strong>
-                R$ 19.90
-              </strong>
+              <p>{food.description}</p>
+              <strong>R$ {food.price}</strong>
             </main>
 
             <footer>
@@ -51,13 +47,13 @@ export function Card() {
                 </div>
 
                 <div className="availability-container">
-                  <p>{isAvailable ? 'Disponível' : 'Indisponível'}</p>
+                  <p>{food.available ? 'Disponível' : 'Indisponível'}</p>
 
                   <label  className="switch">
                     <input
                       //id={`available-switch-${food.id}`}
                       type="checkbox"
-                      //checked={isAvailable}
+                      checked={food.available}
                       //onChange={this.toggleAvailable}
                       //data-testid={`change-status-food-${food.id}`}
                     />
