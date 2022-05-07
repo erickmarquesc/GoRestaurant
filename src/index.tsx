@@ -14,14 +14,30 @@ createServer({
   seeds(server){
     server.db.loadData({
       foods:[ //NOME DA TABELA, NOME DO MODEL NO PLURAL
-        {
-          id: 1,
-          title: 'Freelance de website',
-          type: 'deposit',
-          category: 'Dev',
-          amount: 6000,
-          createdAt: new Date('2021-04-12 16:00:00')
-        }
+      {
+        "id": 1,
+        "name": "Ao molho",
+        "description": "Macarrão ao molho branco, fughi e cheiro verde das montanhas",
+        "price": "19.90",
+        "available": true,
+        "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png"
+      },
+      {
+        "id": 2,
+        "name": "Veggie",
+        "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
+        "price": "21.90",
+        "available": true,
+        "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
+      },
+      {
+        "id": 3,
+        "name": "A la Camarón",
+        "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+        "price": "25.90",
+        "available": false,
+        "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+      }
       ]
     })
   },
