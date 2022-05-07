@@ -1,6 +1,5 @@
 import { Container } from "./styles";
 import { FiEdit3, FiTrash } from 'react-icons/fi';
-import imgLogo from '../../assets/logo.svg';
 import { useFoods } from "../../hooks/useFoods";
 
 export function Card() {
