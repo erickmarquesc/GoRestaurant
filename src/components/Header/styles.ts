@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-  background: var(--blue);
+  background: var(--red);
 `;
 
 //Deixa o elemento sempre sentralizado
@@ -19,12 +19,18 @@ export const Content = styled.div`
 
   button{
     font-size: 1rem;
-    color: #fff;
-    background: var(--blue-light);
+    color: var(--shape);
+    background: var(--green);
     border: 0;
     padding: 0 2rem;
     border-radius: 0.25rem;
     height: 3rem;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 
     transition: filter 0.5s;
 

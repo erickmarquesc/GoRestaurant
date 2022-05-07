@@ -8,12 +8,12 @@ createServer({
 
   //Banco de dados do miragejs
   models:{
-    transaction: Model,
+    food: Model,
   },
 
   seeds(server){
     server.db.loadData({
-      transactions:[ //NOME DA TABELA, NOME DO MODEL NO PLURAL
+      foods:[ //NOME DA TABELA, NOME DO MODEL NO PLURAL
         {
           id: 1,
           title: 'Freelance de website',
@@ -29,14 +29,14 @@ createServer({
   routes() {
     this.namespace = 'api';
 
-    this.get('/transactions', () => {
-      return this.schema.all('transaction')
+    this.get('/foods', () => {
+      return this.schema.all('food')
     })
 
-    this.post('/transactions', (schema, response) => {
+    this.post('/foods', (schema, response) => {
       const data = JSON.parse(response.requestBody)
 
-      return schema.create('transaction', data) //schema é o banco de dados
+      return schema.create('food', data) //schema é o banco de dados
     })
   }
 })

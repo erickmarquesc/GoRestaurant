@@ -1,39 +1,16 @@
-import { Dashboard } from './components/Dashboard';
-import { Header } from './components/Header';
-import { GlobalStyle } from './styles/global';
-import { useState } from 'react';
-import { NewTransactionModal } from './components/NewTransactionsModal';
-import { TransactionsProvider } from './hooks/useTransactions';
-import Modal from 'react-modal';
+import { Dashboard } from "./components/Dashboard";
+import { Header } from "./components/Header";
+import { FoodsProvider } from "./hooks/useFoods";
+import { GlobalStyle } from "./styles/global";
 
-Modal.setAppElement('#root');// Importante pasa acessibilidade
-
-// Quando usamos o export dessa maneira temos a segurança do nome da função 
 export function App() {
-  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
-
-  function handleOpenNewTransactionModal(){
-    setIsNewTransactionModalOpen(true);
-  }
-
-  function handleCloseNewTransactionModal(){
-    setIsNewTransactionModalOpen(false);
-  }
-  
   return (
-    <TransactionsProvider>
-
+    
+    <FoodsProvider>
       <GlobalStyle/>
-      
-      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
-      
+      <Header/>
       <Dashboard/>
-     
-      <NewTransactionModal 
-        isOpen={isNewTransactionModalOpen} 
-        onRequestClose={handleCloseNewTransactionModal}
-      />
-      
-    </TransactionsProvider>
+    </FoodsProvider>
+    
   );
 }
