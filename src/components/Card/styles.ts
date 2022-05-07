@@ -3,33 +3,33 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1rem;
   margin-top: -10rem;
 
   div{
     border-radius: 1rem;
-    
     color: var(--text-title);
     height: auto;
     
     header{
-      background: var(--background);
-      display: block;
-      align-items: center;
-      line-height: 1rem;
+      line-height: 0.1rem;
       height: auto;
       border-radius: 1rem 1rem 0rem 0rem;
     }
+    
     main{
-      background: var(--shape01);
+      background: var(--grey01);
       padding: 1.5rem 2rem;
+      height: auto;
+
       h2{
         color: var(--text-body);
       }
       p{
-          color: var(--text-body);
-          margin-top: 1rem;
-        }
+        color: var(--text-body);
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
   
       strong{
         display: block;
@@ -60,7 +60,6 @@ export const Container = styled.div`
           display: flex;
           border: none;
           transition: 0.1s;
-
           svg {
             color: #3d3d4d;
           }
