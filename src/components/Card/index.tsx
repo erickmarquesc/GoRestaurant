@@ -50,8 +50,7 @@ export function Card() {
                   <label className="switch">
                     <input
                       //id={`available-switch-${food.id}`}
-                      type="checkbox"
-                      checked={food.available}
+                      placeholder={food.available}
                     //onChange={this.toggleAvailable}
                     //data-testid={`change-status-food-${food.id}`}
                     />
