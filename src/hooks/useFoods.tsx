@@ -5,8 +5,8 @@ interface IFood{
     id: number;
     name: string;
     description: string;
-    price: string;
-    available: boolean;
+    price: number;
+    available: string;
     image: string;
     createdAt: string;
 }
@@ -15,6 +15,7 @@ interface IFoodProviderProps{
 }
 interface IFoodsContextData{
   foods: IFood[];
+  createFood: (foodInput: FoodInput) => Promise<void>;
 }
 type FoodInput = Omit<IFood, 'id' | 'createdAt'>;
 
@@ -35,7 +36,10 @@ export function FoodsProvider({children}: IFoodProviderProps){
     setFoods([...foods, food]);
   }
   return(
-    <FoodsContext.Provider value={{foods}}>
+    <FoodsContext.Provider value={{
+      foods,
+      createFood
+      }}>
       {children}
     </FoodsContext.Provider>
   )
