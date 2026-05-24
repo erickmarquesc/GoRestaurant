@@ -1,6 +1,5 @@
 
 <div align="center">
-<img width=100 src="https://user-images.githubusercontent.com/56804790/167269420-a61c4774-4662-433d-966d-ee3a90070c8a.png"/>
   <h3>GoRestaurant</h3>
   <p>Gerenciamento de cardápio de restaurante com CRUD completo</p>
 </div>
