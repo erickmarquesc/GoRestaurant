@@ -1,43 +1,44 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {createServer, Model} from 'miragejs';
-import {App} from './App';
+import { createRoot } from 'react-dom/client';
+import { createServer, Model } from 'miragejs';
+import { App } from './App';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
-//CRIANDO UMA API FALSA SÓ PARA TESTES 
 createServer({
-
-  //Banco de dados do miragejs
-  models:{
+  models: {
     food: Model,
   },
 
-  seeds(server){
+  seeds(server) {
     server.db.loadData({
-      foods:[ //NOME DA TABELA, NOME DO MODEL NO PLURAL
-      {
-        "id": 1,
-        "name": "Ao molho",
-        "description": "Macarrão ao molho branco, fughi e cheiro verde das montanhas",
-        "price": "19.90",
-        "available": true,
-        "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png"
-      },
-      {
-        "id": 2,
-        "name": "Veggie",
-        "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
-        "price": "21.90",
-        "available": true,
-        "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
-      },
-      {
-        "id": 3,
-        "name": "A la Camarón",
-        "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
-        "price": "25.90",
-        "available": false,
-        "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
-      }
+      foods: [
+        {
+          id: 1,
+          name: "Ao molho",
+          description: "Macarrão ao molho branco, fughi e cheiro verde das montanhas",
+          price: 19.90,
+          available: true,
+          image: "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png",
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: 2,
+          name: "Veggie",
+          description: "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
+          price: 21.90,
+          available: true,
+          image: "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png",
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: 3,
+          name: "A la Camarón",
+          description: "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+          price: 25.90,
+          available: false,
+          image: "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
+          createdAt: new Date().toISOString(),
+        }
       ]
     })
   },
@@ -46,19 +47,33 @@ createServer({
     this.namespace = 'api';
 
     this.get('/foods', () => {
-      return this.schema.all('food')
-    })
+      return this.schema.all('food');
+    });
 
-    this.post('/foods', (schema, response) => {
-      const data = JSON.parse(response.requestBody)
+    this.post('/foods', (schema, request) => {
+      const data = JSON.parse(request.requestBody);
+      return schema.create('food', data);
+    });
 
-      return schema.create('food', data) //schema é o banco de dados
-    })
+    this.put('/foods/:id', (schema, request) => {
+      const food = schema.find('food', request.params.id);
+      const data = JSON.parse(request.requestBody);
+      food?.update(data);
+      return food;
+    });
+
+    this.delete('/foods/:id', (schema, request) => {
+      schema.find('food', request.params.id)?.destroy();
+      return { id: request.params.id };
+    });
   }
-})
-ReactDOM.render(
+});
+
+const root = createRoot(document.getElementById('root')!);
+root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </React.StrictMode>
 );

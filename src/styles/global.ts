@@ -7,10 +7,14 @@ export const GlobalStyle = createGlobalStyle`
     --green: #39b100;
     --yellow: #ffb84d;
     --grey01: #e7e9ee;
-    --grey02: #d7d7d7; 
+    --grey02: #d7d7d7;
     --grey03: #3d3d4d;
     --background: #f0f2f5;
     --purple-light: #6933ff;
+    --white: #ffffff;
+    --text-title: #3d3d4d;
+    --text-body: #73736c;
+    --card-footer: #e4e4eb;
   }
 
   *{
@@ -74,21 +78,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 560px;
     background: var(--background);
-    padding: 3rem;
-    position: relative;
     border-radius: 0.24rem;
-  }
-  .react-modal-close{
-    position: absolute;
-    right: 1.5rem;
-    top: 1.5rem;
-    border: 0;
-    background: transparent;
-
-    transition: filter 0.2s;
-
-    &:hover{
-      filter: brightness(0.8);
-    }
+    overflow: hidden;
   }
 `;

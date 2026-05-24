@@ -1,10 +1,10 @@
 import { FiPlusSquare } from 'react-icons/fi';
 import imgLogo from '../../assets/logo.svg';
-import { useNewFoodsModal } from '../../hooks/useNewFoodsModal';
+import { useModal } from '../../hooks/useModal';
 import { Container, Content } from './styles';
 
 export function Header() {
-  const {handleOpenNewFoodsModal} = useNewFoodsModal();
+  const { openNewModal } = useModal();
   return (
     <Container>
       <Content>
@@ -12,7 +12,7 @@ export function Header() {
         <img src={imgLogo} alt="GoRestaurant" />
         <button
           type="button"
-          onClick={handleOpenNewFoodsModal}
+          onClick={openNewModal}
         >
           Novo Prato
           <FiPlusSquare size={24} />
