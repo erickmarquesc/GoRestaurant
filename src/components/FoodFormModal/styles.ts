@@ -42,6 +42,10 @@ export const Container = styled.form`
       box-shadow: 0 0 0 3px rgba(199, 40, 40, 0.1);
     }
 
+    &[data-invalid='true'] {
+      border-color: var(--red);
+    }
+
     &::placeholder {
       color: #b7b7cc;
       font-size: 0.9rem;
@@ -86,10 +90,22 @@ export const Container = styled.form`
     font-weight: 600;
     margin-top: 0.25rem;
     letter-spacing: 0.03em;
-    transition: filter 0.2s;
+    transition: filter 0.2s, opacity 0.2s;
+    cursor: pointer;
 
-    &:hover {
+    &:hover:not(:disabled) {
       filter: brightness(0.9);
     }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   }
+`;
+
+export const ErrorMessage = styled.span.attrs({ role: 'alert', 'aria-live': 'polite' })`
+  font-size: 0.75rem;
+  color: var(--red);
+  font-weight: 500;
 `;
