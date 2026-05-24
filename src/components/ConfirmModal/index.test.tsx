@@ -1,13 +1,14 @@
+import { type Mock } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { ConfirmModal } from './index';
 import { useFoods } from '../../hooks/useFoods';
 import { useModal } from '../../hooks/useModal';
 
-jest.mock('../../hooks/useFoods');
-jest.mock('../../hooks/useModal');
+vi.mock('../../hooks/useFoods');
+vi.mock('../../hooks/useModal');
 
-const mockDeleteFood = jest.fn();
-const mockCloseModal = jest.fn();
+const mockDeleteFood = vi.fn();
+const mockCloseModal = vi.fn();
 
 const foodMock = {
   id: 1,
@@ -20,11 +21,11 @@ const foodMock = {
 };
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 
-  (useFoods as jest.Mock).mockReturnValue({ deleteFood: mockDeleteFood });
+  (useFoods as Mock).mockReturnValue({ deleteFood: mockDeleteFood });
 
-  (useModal as jest.Mock).mockReturnValue({
+  (useModal as Mock).mockReturnValue({
     activeModal: 'confirm',
     confirmingFood: foodMock,
     closeModal: mockCloseModal,
@@ -57,7 +58,7 @@ describe('ConfirmModal', () => {
   });
 
   it('não deve renderizar o modal quando activeModal não for confirm', () => {
-    (useModal as jest.Mock).mockReturnValue({
+    (useModal as Mock).mockReturnValue({
       activeModal: null,
       confirmingFood: null,
       closeModal: mockCloseModal,

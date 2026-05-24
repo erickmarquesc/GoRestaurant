@@ -1,11 +1,12 @@
+import { type Mocked } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { ReactNode } from 'react';
 import { FoodsProvider, useFoods } from './useFoods';
 import { api } from '../services/api';
 
-jest.mock('../services/api');
+vi.mock('../services/api');
 
-const mockApi = api as jest.Mocked<typeof api>;
+const mockApi = api as Mocked<typeof api>;
 
 const foodMock = {
   id: 1,
@@ -23,8 +24,8 @@ function wrapper({ children }: { children: ReactNode }) {
 
 describe('useFoods', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
-    mockApi.get = jest.fn().mockResolvedValue({ data: { foods: [foodMock] } });
+    vi.clearAllMocks();
+    mockApi.get = vi.fn().mockResolvedValue({ data: { foods: [foodMock] } });
   });
 
   it('deve carregar os pratos na inicialização', async () => {
@@ -42,7 +43,7 @@ describe('useFoods', () => {
 
   it('deve criar um novo prato', async () => {
     const newFood = { ...foodMock, id: 2, name: 'Novo Prato' };
-    mockApi.post = jest.fn().mockResolvedValue({ data: { food: newFood } });
+    mockApi.post = vi.fn().mockResolvedValue({ data: { food: newFood } });
 
     const { result } = renderHook(() => useFoods(), { wrapper });
 
@@ -63,7 +64,7 @@ describe('useFoods', () => {
   });
 
   it('deve deletar um prato', async () => {
-    mockApi.delete = jest.fn().mockResolvedValue({});
+    mockApi.delete = vi.fn().mockResolvedValue({});
 
     const { result } = renderHook(() => useFoods(), { wrapper });
 
@@ -77,7 +78,7 @@ describe('useFoods', () => {
   });
 
   it('deve alternar a disponibilidade de um prato', async () => {
-    mockApi.put = jest.fn().mockResolvedValue({});
+    mockApi.put = vi.fn().mockResolvedValue({});
 
     const { result } = renderHook(() => useFoods(), { wrapper });
 

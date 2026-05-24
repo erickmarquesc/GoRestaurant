@@ -1,24 +1,25 @@
+import { type Mock } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FoodFormModal } from './index';
 import { useFoods } from '../../hooks/useFoods';
 import { useModal } from '../../hooks/useModal';
 
-jest.mock('../../hooks/useFoods');
-jest.mock('../../hooks/useModal');
+vi.mock('../../hooks/useFoods');
+vi.mock('../../hooks/useModal');
 
-const mockCreateFood = jest.fn();
-const mockCloseModal = jest.fn();
+const mockCreateFood = vi.fn();
+const mockCloseModal = vi.fn();
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 
-  (useFoods as jest.Mock).mockReturnValue({
+  (useFoods as Mock).mockReturnValue({
     createFood: mockCreateFood,
-    updateFood: jest.fn(),
+    updateFood: vi.fn(),
   });
 
-  (useModal as jest.Mock).mockReturnValue({
+  (useModal as Mock).mockReturnValue({
     activeModal: 'new',
     editingFood: null,
     closeModal: mockCloseModal,
