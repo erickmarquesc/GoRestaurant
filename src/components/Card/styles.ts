@@ -1,76 +1,72 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: -10rem;
+export const CardItem = styled.div`
+  border-radius: 1rem;
+  color: var(--text-title);
+  height: auto;
 
-  div{
-    border-radius: 1rem;
-    color: var(--text-title);
+  header {
+    line-height: 0.1rem;
     height: auto;
-    
-    header{
-      line-height: 0.1rem;
-      height: auto;
-      border-radius: 1rem 1rem 0rem 0rem;
-    }
-    
-    main{
-      background: var(--grey01);
-      padding: 1.5rem 2rem;
-      height: auto;
+    border-radius: 1rem 1rem 0 0;
+  }
 
-      h2{
-        color: var(--text-body);
-      }
-      p{
-        color: var(--text-body);
-        margin-top: 1rem;
-        font-size: 0.9rem;
-      }
-  
-      strong{
-        display: block;
-        margin-top: 1rem;
-        font-size: 1.5rem;
-        font-weight: 600;
-        line-height: 3rem;
-        color: var(--green);
-      }
+  main {
+    background: var(--grey01);
+    padding: 1.5rem 2rem;
+    height: auto;
+
+    h2 {
+      color: var(--text-body);
     }
 
-    footer {
+    p {
+      color: var(--text-body);
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    strong {
+      display: block;
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 3rem;
+      color: var(--green);
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--card-footer);
+    border-radius: 0 0 1rem 1rem;
+
+    div.icon-container {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
 
-      padding: 1rem 1rem;
-      background: #e4e4eb;
-      border-radius: 0rem 0rem 1rem 1rem;
-
-      div.icon-container {
+      button {
+        background: var(--white);
+        padding: 0.6rem;
+        border-radius: 0.5rem;
         display: flex;
+        border: none;
+        cursor: pointer;
+        transition: 0.1s;
 
-        button {
-          background: #fff;
-          padding: 0.6rem;
-          border-radius: 0.5rem;
-          display: flex;
-          border: none;
-          transition: 0.1s;
-          svg {
-            color: #3d3d4d;
-          }
+        svg {
+          color: var(--grey03);
+        }
 
-          & + button {
-            margin-left: 0.3rem;
-          }
+        & + button {
+          margin-left: 0.3rem;
         }
       }
-      
-      div.availability-container {
+    }
+
+    div.availability-container {
       display: flex;
       align-items: center;
 
@@ -85,7 +81,7 @@ export const Container = styled.div`
         height: 2rem;
         margin-left: 0.75rem;
 
-        & input {
+        input {
           opacity: 0;
           width: 0;
           height: 0;
@@ -99,7 +95,6 @@ export const Container = styled.div`
           right: 0;
           bottom: 0;
           background-color: var(--red);
-          -webkit-transition: 0.4s;
           transition: 0.4s;
           border-radius: 1rem;
 
@@ -110,8 +105,7 @@ export const Container = styled.div`
             width: 2.5rem;
             left: 0.5rem;
             bottom: 0.3rem;
-            background-color: white;
-            -webkit-transition: 0.4s;
+            background-color: var(--white);
             transition: 0.4s;
             border-radius: 0.6rem;
           }
@@ -126,12 +120,9 @@ export const Container = styled.div`
         }
 
         input:checked + .slider:before {
-          -webkit-transform: translateX(32px);
-          -ms-transform: translateX(32px);
           transform: translateX(32px);
         }
       }
-    }
     }
   }
 `;
